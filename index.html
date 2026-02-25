@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>فريق أثر - استمارة الانضمام</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,93 +23,81 @@
             box-sizing: border-box;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             margin: 0;
             background: var(--bg-dark);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             color: white;
             position: relative;
-            max-width: 100%;
+            width: 100%;
             overflow-x: hidden;
-            padding: 0;
-            /* ضروري لتموضع الشعار */
+            padding: 20px 10px;
         }
 
-        /* --- 1. إضافة الشعار في الخلفية --- */
+        /* --- الخلفية والشعار --- */
         body::before {
             content: "";
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* استبدل الرابط التالي برابط شعار المؤسسة */
             background-image: url('/logo.png');
             background-position: center;
             background-repeat: no-repeat;
-            /* حجم الشعار (يمكنك تعديل 50% لتكبيره أو تصغيره) */
-            background-size: 50%;
-            /* شفافية الشعار (0.1 تعني شفاف جداً، 0.9 تعني غامق) */
-            opacity: 0.15;
+            background-size: 70%;
+            opacity: 0.1;
             z-index: -2;
-            /* ليكون خلف الأنيميشن السائل */
             pointer-events: none;
-            /* لضمان عدم تأثيره على النقرات */
         }
 
         .liquid-bg {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
-            width: 600px;
-            height: 600px;
+            width: 300px;
+            height: 300px;
             background: linear-gradient(45deg, var(--primary), #8e44ad);
-            filter: blur(120px);
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            filter: blur(80px);
+            border-radius: 50%;
             z-index: -1;
             transform: translate(-50%, -50%);
-            animation: liquid-move 20s infinite linear;
-            opacity: 0.4;
-            pointer-events: none; /* لضمان عدم تداخلها مع اللمس */
-            overflow: hidden;
+            opacity: 0.3;
+            pointer-events: none;
         }
-
-       
 
         .container {
             background: var(--glass);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            width: 95%;
-            max-width: 550px;
-            padding: 40px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 25px;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             max-height: 90vh;
             overflow-y: auto;
-            /* --- 2. إخفاء شريط التمرير (للمتصفحات الحديثة مثل فايرفوكس) --- */
             scrollbar-width: none;
+            position: relative;
         }
 
-        /* --- 2. تابع: إخفاء شريط التمرير (لمتصفحات كروم وسفاري) --- */
         .container::-webkit-scrollbar {
             display: none;
-            /* يخفي الشريط تماماً */
         }
 
         .progress-container {
             width: 100%;
-            height: 6px;
+            height: 5px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .progress-bar {
@@ -117,12 +105,12 @@
             width: 20%;
             background: var(--primary);
             border-radius: 10px;
-            box-shadow: 0 0 15px var(--primary);
+            box-shadow: 0 0 10px var(--primary);
         }
 
         .step {
             display: none;
-            animation: slideUp 0.5s ease forwards;
+            animation: slideUp 0.4s ease-out forwards;
         }
 
         .step.active {
@@ -130,20 +118,13 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1.logo {
-            font-size: 3rem;
-            margin: 0;
+            font-size: 2.2rem;
+            margin: 0 0 10px 0;
             font-weight: 900;
             background: linear-gradient(to bottom, #fff, var(--secondary));
             -webkit-background-clip: text;
@@ -151,62 +132,52 @@
             text-align: center;
         }
 
-        input,
-        textarea,
-        select {
+        h2 { font-size: 1.2rem; margin-bottom: 5px; }
+        h3 { font-size: 1.1rem; margin-bottom: 15px; border-right: 4px solid var(--primary); padding-right: 10px; }
+
+        input, textarea, select {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
+            padding: 14px;
+            margin: 8px 0;
             border-radius: 12px;
             border: 1px solid var(--glass-border);
             background: rgba(255, 255, 255, 0.05);
             color: white;
             outline: none;
-            font-size: 0.9rem;
+            font-size: 16px; /* منع الـ Zoom التلقائي في آيفون */
         }
 
-        .error-field {
-            border-color: var(--error) !important;
-            animation: shake 0.4s;
-            background: rgba(255, 71, 87, 0.1) !important;
-        }
-
-        @keyframes shake {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-5px);
-            }
-
-            75% {
-                transform: translateX(5px);
-            }
+        input:focus, textarea:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .dept-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin: 20px 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
         }
 
         .dept-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
-            padding: 15px 10px;
-            border-radius: 15px;
+            padding: 12px 5px;
+            border-radius: 12px;
             cursor: pointer;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
         }
+
+        .dept-card h4 { margin: 0; font-size: 0.85rem; font-weight: 400; }
 
         .dept-card.selected {
             background: var(--primary);
             border-color: white;
-            transform: scale(1.05);
+            transform: scale(0.98);
         }
 
         .btn-row {
@@ -217,29 +188,35 @@
 
         button {
             flex: 1;
-            padding: 14px;
-            border-radius: 15px;
+            padding: 15px;
+            border-radius: 12px;
             border: none;
             font-weight: bold;
+            font-size: 1rem;
             cursor: pointer;
             color: white;
             background: var(--primary);
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
         }
+
+        button:active { transform: scale(0.95); }
 
         .btn-prev {
             background: rgba(255, 255, 255, 0.1);
+            box-shadow: none;
         }
-        @media screen and (max-width: 600px) {
-    .container {
-        width: 90%;
-        margin: 0 auto;
-        padding: 20px; /* تقليل الحشو ليتناسب مع الشاشات الصغيرة */
-    }
-    
-    .dept-grid {
-        grid-template-columns: 1fr; /* جعل البطاقات تحت بعضها في الموبايل لتجنب العرض الزائد */
-    }
-}
+
+        .error-field {
+            border-color: var(--error) !important;
+            background: rgba(255, 71, 87, 0.1) !important;
+        }
+
+        /* تعديلات الموبايل */
+        @media (max-width: 400px) {
+            .dept-grid { grid-template-columns: 1fr; }
+            h1.logo { font-size: 1.8rem; }
+            .container { padding: 20px 15px; }
+        }
     </style>
 </head>
 
@@ -255,7 +232,7 @@
         <div class="step active" id="step1">
             <h1 class="logo">مؤسســة أثــر </h1>
             <h2 style="text-align: center;">نزرع المعرفة لنترك أثراً يبقى </h2>
-            <p style="text-align: center; opacity: 0.8;">انضم إلينا واصنع معنا الأثر</p>
+            <p style="text-align: center; opacity: 0.8; font-size: 0.9rem;">انضم إلينا واصنع معنا الأثر</p>
             <button onclick="goTo(2)">ابدأ الآن</button>
         </div>
 
@@ -298,9 +275,9 @@
             <h3>التوجه والالتزام</h3>
             <textarea id="why_join" placeholder="لماذا ترغب بالانضمام للمؤسسة؟" rows="2" required></textarea>
             <textarea id="volunteer_exp" placeholder="تجاربك السابقة في التطوع..." rows="2" required></textarea>
-            <div style="margin: 10px 0; text-align: right;">
-                <label>نسبة الالتزام: <span id="commit-txt">100%</span></label>
-                <input type="range" id="commitment" min="0" max="100" value="100" oninput="updateRange(this.value)">
+            <div style="margin: 10px 0; text-align: right; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px;">
+                <label style="font-size: 0.9rem;">نسبة الالتزام: <span id="commit-txt" style="color: var(--secondary); font-weight: bold;">100%</span></label>
+                <input type="range" id="commitment" min="0" max="100" value="100" oninput="updateRange(this.value)" style="margin: 10px 0 0 0;">
             </div>
             <select id="extra_hours" required>
                 <option value="" disabled selected>ساعات إضافية؟</option>
@@ -317,7 +294,7 @@
     </div>
 
     <script>
-        
+        // الكود المصدري للجافا سكريبت كما هو تماماً دون أي تعديل في المنطق
         const API_URL = "https://sheetdb.io/api/v1/bi0e9hh6qk36x";
         const depts = [
             { id: 'media', name: 'الإعلام والسوشل ميديا' },
@@ -329,7 +306,7 @@
             { id: 'logistics', name: 'الموارد اللوجستية' },
             { id: 'tech', name: 'التقانة وإدارة البيانات' },
             { id: 'execution', name: 'قسم التنفيذ' }
-        ];        
+        ];
 
         function renderDepts() {
             const grid = document.getElementById('dept-grid');
@@ -350,6 +327,7 @@
             document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
             document.getElementById('p-bar').style.width = (step * 20) + "%";
+            document.getElementById('survey-box').scrollTop = 0; // العودة للأعلى عند الانتقال
         }
 
         function nextWithValidation(currentStep, nextStep) {
@@ -423,7 +401,7 @@
                 });
 
                 document.getElementById('survey-box').innerHTML = `
-                    <div class="step active" style="text-align:center;">
+                    <div class="step active" style="text-align:center; padding: 40px 0;">
                         <h1 class="logo">أثــر</h1>
                         <h2 style="margin-top:20px;">شكراً لك!</h2>
                         <p>تم استلام طلبك بنجاح. سنبقى على تواصل 💜</p>
@@ -438,7 +416,4 @@
         renderDepts();
     </script>
 </body>
-
-
 </html>
-
