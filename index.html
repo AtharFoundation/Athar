@@ -35,6 +35,9 @@
             overflow: hidden;
             color: white;
             position: relative;
+            max-width: 100%;
+            overflow-x: hidden;
+            padding: 0;
             /* ضروري لتموضع الشعار */
         }
 
@@ -73,6 +76,8 @@
             transform: translate(-50%, -50%);
             animation: liquid-move 20s infinite linear;
             opacity: 0.4;
+            pointer-events: none; /* لضمان عدم تداخلها مع اللمس */
+            overflow: hidden;
         }
 
        
@@ -224,6 +229,17 @@
         .btn-prev {
             background: rgba(255, 255, 255, 0.1);
         }
+        @media screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px; /* تقليل الحشو ليتناسب مع الشاشات الصغيرة */
+    }
+    
+    .dept-grid {
+        grid-template-columns: 1fr; /* جعل البطاقات تحت بعضها في الموبايل لتجنب العرض الزائد */
+    }
+}
     </style>
 </head>
 
@@ -425,3 +441,4 @@
 
 
 </html>
+
