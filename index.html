@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta proerty="og:title" content="قريق أثر - استبيان انضمام" />
+    <meta proerty="og:description" content="استبيان انضمام الأعضاء الجدد الخ الخ اقترحولي شي شغلة حطا هون" />
+    <meta proerty="og:image" content="logo.png" />
+    <meta proerty="og:type" content="website" />
     <title>فريق أثر - استمارة الانضمام</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,10 +52,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('logo.png');
+            background-image: url('/logo.png');
             background-position: center;
             background-repeat: no-repeat;
-            background-size: 70%;
+            background-size: cover;
             opacity: 0.1;
             z-index: -2;
             pointer-events: none;
@@ -214,7 +218,7 @@
         /* تعديلات الموبايل */
         @media (max-width: 400px) {
             .dept-grid { grid-template-columns: 1fr; }
-            h1.logo { font-size: 1.8rem; }
+            h1 { font-size: 1.8rem; }
             .container { padding: 20px 15px; }
         }
     </style>
@@ -230,7 +234,7 @@
         </div>
 
         <div class="step active" id="step1">
-            <h1 class="logo">مؤسســة أثــر </h1>
+            <h1 class="logo">فريـق أثــر </h1>
             <h2 style="text-align: center;">نزرع المعرفة لنترك أثراً يبقى </h2>
             <p style="text-align: center; opacity: 0.8; font-size: 0.9rem;">انضم إلينا واصنع معنا الأثر</p>
             <button onclick="goTo(2)">ابدأ الآن</button>
@@ -242,7 +246,7 @@
             <input type="number" id="age" placeholder="العمر" required>
             <input type="text" id="major" placeholder="الاختصاص" required>
             <input type="text" id="city" placeholder="المحافظة" required>
-            <input type="tel" id="whatsapp" placeholder="رقم الواتساب" required>
+            <input type="tel" id="whatsapp" placeholder="رقم الواتساب" required dir="rtl">
             <input type="email" id="email" placeholder="البريد الإلكتروني" required>
             <div class="btn-row">
                 <button class="btn-prev" onclick="goTo(1)">السابق</button>
@@ -273,7 +277,7 @@
 
         <div class="step" id="step5">
             <h3>التوجه والالتزام</h3>
-            <textarea id="why_join" placeholder="لماذا ترغب بالانضمام للمؤسسة؟" rows="2" required></textarea>
+            <textarea id="why_join" placeholder="لماذا ترغب بالانضمام للفريق؟" rows="2" required></textarea>
             <textarea id="volunteer_exp" placeholder="تجاربك السابقة في التطوع..." rows="2" required></textarea>
             <div style="margin: 10px 0; text-align: right; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px;">
                 <label style="font-size: 0.9rem;">نسبة الالتزام: <span id="commit-txt" style="color: var(--secondary); font-weight: bold;">100%</span></label>
@@ -417,4 +421,3 @@
     </script>
 </body>
 </html>
-
